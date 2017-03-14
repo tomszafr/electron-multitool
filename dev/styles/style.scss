@@ -1,0 +1,72 @@
+@import 'reset';
+$dark-color: #593E27;
+$light-color: #F0DBD8;
+
+body {
+  font-family: Impact;
+  background-color: $light-color;
+  color: $dark-color;
+}
+#container {
+  width: 444px;
+  box-sizing: border-box;
+}
+nav {
+  width: 100%;
+  background-color: #A3B0BD;
+  padding: 10px 20px;
+  button {
+    &:hover {
+      background-color: $light-color;
+      color: $dark-color;
+      cursor: pointer;
+      border: 1px solid $dark-color;
+    }
+    font-weight: bold;
+    background-color: $dark-color;
+    color: $light-color;
+    border: 0px;
+    margin-right: 10px;
+    width: 100px;
+    height: 30px;
+    outline: none;
+  }
+}
+header {
+  width: 100%;
+  padding: 10px 20px;
+  h1 {
+    font-size: 46px;
+  }
+}
+
+section{
+  padding: 10px 20px;
+  .mainDisplay {
+    width: 443px;
+    height: 395px;
+    background-color: #f5e7e7;
+    border: 1px solid $dark-color;
+    padding: 10px;
+    box-sizing: border-box;
+    button {
+      &:hover {
+        background-color: $light-color;
+        color: $dark-color;
+        cursor: pointer;
+        border: 1px solid $dark-color;
+      }
+      font-weight: bold;
+      background-color: $dark-color;
+      color: $light-color;
+      border: 0px;
+      margin-right: 10px;
+      width: 100px;
+      height: 30px;
+      outline: none;
+    }
+    .viewDisplay {
+      margin-top: 10px;
+    }
+  }
+}
