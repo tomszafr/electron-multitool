@@ -1,10 +1,10 @@
-#### Based on electron-quick-start
+### Based on electron-quick-start
 
 ```bash
 # Clone this repository
 git clone https://github.com/tomszafr/tszafr-learning-electron
 # Go into the repository
-cd electron-quick-start
+cd tszafr-learning-electron
 # Install dependencies
 npm install
 npm install webpack -g
