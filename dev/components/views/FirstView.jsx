@@ -1,32 +1,7 @@
 const React = require('react');
-const {dialog} = electronRequire('electron').remote;
-const fs = require('fs');
+import {openFile, readFile, saveChanges} from './../../node-methods/file-operations.jsx'
 
 import DisplayWindow from "./../DisplayWindow.jsx"
-
-function openFile(cb) {
-  let callback = cb
-  dialog.showOpenDialog(function (fileNames) {
-      // fileNames is an array that contains all the selected
-     if(fileNames === undefined){
-          console.log("No file selected");
-     } else {
-          readFile(fileNames[0], callback)
-     }
-  })
- }
-
- function readFile(filepath, cb){
-     fs.readFile(filepath, 'utf-8', function (err, data) {
-           if(err){
-               alert("An error ocurred reading the file :" + err.message);
-               return false;
-           }
-           // Change how to handle the file content
-           console.log("The file content is : " + data);
-           cb(data);
-     });
- }
 
 const FirstView = React.createClass({
   getInitialState: function() {
@@ -34,15 +9,27 @@ const FirstView = React.createClass({
       return this.props.state
     } else {
       return {
-        content: ''
+        content: '',
+        filepath: ''
       }
     }
   },
-  updateContent: function(data) {
-    console.log('update with: ' + data)
+  updateContent: function(data, filepath) {
+    this._textarea.value = data;
     this.setState({
-      content: data
+      content: data,
+      filepath: filepath
     })
+  },
+  handleChange: function(event) {
+    this.setState({
+      content: event.target.value
+    });
+  },
+  componentDidMount: function() {
+    if (this.state.content) {
+      this._textarea.value = this.state.content;
+    }
   },
   componentWillUnmount: function() {
     return this.props.saveState(this.state, 'FirstView')
@@ -52,8 +39,11 @@ const FirstView = React.createClass({
       <div>
         <button onClick={() => {
             openFile(this.updateContent)
-        }}>Load a file</button>
-      <DisplayWindow editContent={this.updateContent} cssClass="viewDisplay">{this.state.content}</DisplayWindow>
+        }}>Open</button>
+        <button onClick={() => {
+            saveChanges(this.state.filepath, this.state.content)
+        }}>Save</button>
+      <textarea className="viewDisplay" ref={(el) => this._textarea = el} onChange={this.handleChange}></textarea>
       </div>
     )
   }

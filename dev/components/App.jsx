@@ -39,7 +39,7 @@ const App = React.createClass({
         <nav>
           <button onClick = {
             () => this.updateView( <FirstView state={this.state.FirstView} saveState={this.saveViewState} /> )
-          }> FirstView </button>
+          }> Notepad </button>
           <button onClick = {
             () => this.updateView( <SecondView state={this.state.SecondView} saveState={this.saveViewState} /> )
           }> SecondView </button>
