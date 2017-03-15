@@ -8,27 +8,7 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import FirstView from './views/FirstView.jsx'
-import SecondView from './views/SecondView.jsx'
-
 const App = React.createClass({
-  getInitialState: function() {
-    return {
-      view: <FirstView saveState={this.saveViewState} />,
-      FirstView: {},
-      SecondView: {}
-    }
-  },
-  saveViewState: function(state, view) {
-    let stateToMerge ={}
-    stateToMerge[view] = state
-    this.setState(stateToMerge)
-  },
-  updateView: function(newViewComponent) {
-    this.setState({
-      view: newViewComponent
-    })
-  },
   render: function() {
     return (
       <div>
@@ -37,16 +17,12 @@ const App = React.createClass({
         </header>
 
         <nav>
-          <button onClick = {
-            () => this.updateView( <FirstView state={this.state.FirstView} saveState={this.saveViewState} /> )
-          }> Notepad </button>
-          <button onClick = {
-            () => this.updateView( <SecondView state={this.state.SecondView} saveState={this.saveViewState} /> )
-          }> SecondView </button>
+          <ul className="header">
+            <li><NavLink to="/">Notepad</NavLink></li>
+            <li><NavLink to="/second">Else</NavLink></li>
+          </ul>
         </nav>
-        <section>
-          <DisplayWindow cssClass="mainDisplay"> {this.state.view} </DisplayWindow >
-        </section>
+        <section className="mainDisplay">{this.props.children}</section>
 
       </div> )
     }

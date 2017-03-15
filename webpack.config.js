@@ -8,6 +8,10 @@ var OUTPUT = path.resolve(__dirname, "js");
 var config = {
   entry: DEV + "/index.jsx",
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   output: {
     path: OUTPUT,
     filename: "react.js"

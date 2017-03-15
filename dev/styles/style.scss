@@ -15,21 +15,30 @@ nav {
   width: 100%;
   background-color: #A3B0BD;
   padding: 10px 20px;
-  button {
-    &:hover {
-      background-color: $light-color;
-      color: $dark-color;
-      cursor: pointer;
-      border: 1px solid $dark-color;
-    }
-    font-weight: bold;
-    background-color: $dark-color;
+  ul > li {
+    display: inline-block;
+    box-sizing: border-box;
+    a {
+      &:hover {
+        background-color: $light-color;
+        color: $dark-color;
+        cursor: pointer;
+        border: 1px solid $dark-color;
+        outline: none;
+      }
     color: $light-color;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    background-color: $dark-color;
     border: 0px;
     margin-right: 10px;
     width: 100px;
     height: 30px;
     outline: none;
+    display: inline-block;
+    box-sizing: border-box;
+    }
   }
 }
 header {
@@ -40,15 +49,14 @@ header {
   }
 }
 
-section{
-  padding: 10px 20px;
-  .mainDisplay {
+section.mainDisplay {
     width: 443px;
     height: 395px;
     background-color: #f5e7e7;
     border: 1px solid $dark-color;
-    padding: 10px;
     box-sizing: border-box;
+    padding: 10px 20px;
+    margin: 10px 20px;
     button {
       &:hover {
         background-color: $light-color;
@@ -73,5 +81,4 @@ section{
       box-sizing: border-box;
       resize: none;
     }
-  }
 }

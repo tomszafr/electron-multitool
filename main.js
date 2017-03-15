@@ -12,21 +12,22 @@ const ReactDOM = require('react-dom')
 
 const {dialog} = require('electron')
 
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({resizable: false, width: 500, height: 600})
+  // Create the browser window. resizable: false,
+  mainWindow = new BrowserWindow({resizable: true, width: 800, height: 600})
 
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  // mainWindow.loadURL(url.format({
+  //   pathname: path.join(__dirname, '/index.html'),
+  //   protocol: 'file:',
+  //   slashes: false
+  // }))
+
+  mainWindow.loadURL('file:///' + __dirname + "/index.html");
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
