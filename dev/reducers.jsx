@@ -11,7 +11,6 @@ function fileContent (state = {}, action) {
       }
       return Object.assign({}, state, newFileContent)
     case CLOSE_FILE:
-    console.log('try to close')
       return {
         text: '',
         filepath: ''
