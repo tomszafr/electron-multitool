@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink
+  HashRouter as Router,
+  Route
 } from 'react-router-dom';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux';
@@ -12,7 +10,6 @@ import { Provider } from 'react-redux';
 import createHashHistory from 'history/createHashHistory'
 
 let history = createHashHistory()
-console.log(history)
 
 import App from "./components/App.jsx"
 import theAppStore from "./reducers.jsx"

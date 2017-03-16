@@ -1,12 +1,6 @@
 const React = require('react');
-import DisplayWindow from "./DisplayWindow.jsx"
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const App = React.createClass({
   render: function() {
