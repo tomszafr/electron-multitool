@@ -41,7 +41,7 @@
     "body-parser": "^1.17.1",
     "electron": "^1.6.2",
     "extract-text-webpack-plugin": "^2.1.0",
-    "history": "^4.6.0",
+    "history": "^4.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

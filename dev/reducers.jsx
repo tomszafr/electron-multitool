@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux'
-import { LOAD_FILE, CHANGE_TEXT } from './actions.jsx'
+import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE } from './actions.jsx'
 
 function fileContent (state = {}, action) {
-  console.log(state)
   switch (action.type) {
     case LOAD_FILE:
       return Object.assign({}, state.fileContent, action.fileContent)
@@ -10,9 +9,13 @@ function fileContent (state = {}, action) {
       let newFileContent = {
         text: action.text
       }
-      console.log(state)
-      console.log(action);
-      return Object.assign({}, state.fileContent, newFileContent)
+      return Object.assign({}, state, newFileContent)
+    case CLOSE_FILE:
+    console.log('try to close')
+      return {
+        text: '',
+        filepath: ''
+      }
     default:
       return state
   }

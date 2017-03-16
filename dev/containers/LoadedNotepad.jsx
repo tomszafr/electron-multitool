@@ -1,6 +1,6 @@
 import Notepad from './../components/views/Notepad.jsx'
 import { connect } from 'react-redux'
-import { loadFile, changeText } from './../actions.jsx'
+import { loadFile, changeText, closeFile } from './../actions.jsx'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoadFile: (fileContent) => {
       dispatch(loadFile(fileContent))
+    },
+    onCloseFile: () => {
+      dispatch(closeFile())
     },
     onChangeText: (text) => {
       dispatch(changeText(text))

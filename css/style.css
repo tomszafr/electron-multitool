@@ -62,12 +62,14 @@ nav {
     display: inline-block;
     box-sizing: border-box; }
     nav ul > li a {
+      cursor: pointer;
       color: #F0DBD8;
       text-decoration: none;
       text-align: center;
       line-height: 30px;
+      font-weight: lighter;
       background-color: #593E27;
-      border: 0px;
+      border: 1px solid #593E27;
       margin-right: 10px;
       width: 100px;
       height: 30px;
@@ -77,9 +79,8 @@ nav {
       nav ul > li a:hover {
         background-color: #F0DBD8;
         color: #593E27;
-        cursor: pointer;
-        border: 1px solid #593E27;
-        outline: none; }
+        outline: none;
+        box-sizing: border-box; }
 
 header {
   width: 100%;
@@ -101,7 +102,7 @@ section.mainDisplay {
     color: #F0DBD8;
     border: 0px;
     margin-right: 10px;
-    width: 100px;
+    width: 90px;
     height: 30px;
     outline: none; }
     section.mainDisplay button:hover {

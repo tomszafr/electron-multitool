@@ -22,16 +22,17 @@ nav {
       &:hover {
         background-color: $light-color;
         color: $dark-color;
-        cursor: pointer;
-        border: 1px solid $dark-color;
         outline: none;
+        box-sizing: border-box;
       }
+    cursor: pointer;
     color: $light-color;
     text-decoration: none;
     text-align: center;
     line-height: 30px;
+    font-weight: lighter;
     background-color: $dark-color;
-    border: 0px;
+    border: 1px solid $dark-color;
     margin-right: 10px;
     width: 100px;
     height: 30px;
@@ -41,6 +42,7 @@ nav {
     }
   }
 }
+
 header {
   width: 100%;
   padding: 10px 20px;
@@ -69,7 +71,7 @@ section.mainDisplay {
       color: $light-color;
       border: 0px;
       margin-right: 10px;
-      width: 100px;
+      width: 90px;
       height: 30px;
       outline: none;
     }

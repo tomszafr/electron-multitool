@@ -18,16 +18,16 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window. resizable: false,
-  mainWindow = new BrowserWindow({resizable: true, width: 800, height: 600})
+  mainWindow = new BrowserWindow({resizable: true, width: 800, height: 600, "web-preferences": {
+      "web-security": false
+    }})
 
   // and load the index.html of the app.
-  // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, '/index.html'),
-  //   protocol: 'file:',
-  //   slashes: false
-  // }))
-
-  mainWindow.loadURL('file:///' + __dirname + "/index.html");
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, '/index.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
