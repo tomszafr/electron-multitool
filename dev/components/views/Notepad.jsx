@@ -1,5 +1,5 @@
 const React = require('react');
-import {openFile, readFile, saveChanges, createFile} from './../../node-methods/file-operations.jsx'
+import {showModal, openFile, readFile, saveChanges, createFile} from './../../node-methods/file-operations.jsx'
 
 const Notepad = React.createClass({
   // Calls the dispatch method with the current state of the textarea
@@ -29,8 +29,17 @@ const Notepad = React.createClass({
   // Clear the textarea and redux store data afterwards
   handleCloseAndNewFile: function() {
     if ((this.props.fileContent.text) || (this.props.fileContent.filepath)) {
-      if (confirm('Save first?')) {
-        this.handleSave()
+      let modalOptions = {
+        type: 'question',
+        title: 'Save?',
+        message: 'Save before closing?',
+        buttons: ['Yes', 'No', 'Cancel']
+      }
+      switch (showModal(modalOptions)) {
+        case 0:
+          this.handleSave()
+        case 2:
+          return
       }
     }
     this.props.onCloseFile()

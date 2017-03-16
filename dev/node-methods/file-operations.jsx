@@ -1,10 +1,14 @@
 const {dialog} = electronRequire('electron').remote;
 const fs = require('fs');
 
+// https://github.com/electron/electron/blob/master/docs/api/dialog.md#dialogshowmessageboxbrowserwindow-options-callback for available options
+function showModal(options) {
+  return dialog.showMessageBox(options)
+}
+
 function createFile(content, callback) {
   dialog.showSaveDialog(function (fileName) {
          if (fileName === undefined){
-              console.log("You didn't save the file");
               return;
          }
          saveChanges(fileName, content)
@@ -16,7 +20,6 @@ function openFile(cb) {
   dialog.showOpenDialog(function (fileNames) {
       // fileNames is an array that contains all the selected
      if(fileNames === undefined){
-          console.log("No file selected");
      } else {
           readFile(fileNames[0], cb)
      }
@@ -26,7 +29,8 @@ function openFile(cb) {
  function readFile(filepath, callback){
      fs.readFile(filepath, 'utf-8', function (err, data) {
            if(err){
-               alert("An error ocurred reading the file :" + err.message);
+               showModal({type: 'error', message: 'An error ocurred reading the file :' + err.message})
+               console.log(err);
                return false;
            }
            callback(data, filepath);
@@ -36,13 +40,11 @@ function openFile(cb) {
  function saveChanges(filepath, content, callback){
     fs.writeFile(filepath, content, function (err) {
         if(err){
-            alert("An error ocurred updating the file"+ err.message);
+            showModal({type: 'error', message: 'An error ocurred updating the file :' + err.message})
             console.log(err);
-            return;
+            return false;
         }
-
-        alert("The file has been succesfully saved");
     });
 }
 
-module.exports = {openFile, createFile, readFile, saveChanges};
+module.exports = {showModal, openFile, createFile, readFile, saveChanges};
