@@ -6,14 +6,23 @@ const Notepad = React.createClass({
   handleChange: function() {
     this.props.onChangeText(this._textarea.value)
   },
-  // Callback for opening new files, used to dispatch its data and filepath to the redux store
-  loadCallback: function(data, filepath) {
-    let newFileContent = {
-      text: data,
-      filepath: filepath
+  // Ask user to confirm whether he wants to save, returns false when they click Cancel
+  confirmSave: function() {
+    let modalOptions = {
+      type: 'question',
+      title: 'Save?',
+      message: 'Save before continuing?',
+      buttons: ['Yes', 'No', 'Cancel']
     }
-    this.props.onLoadFile(newFileContent)
-    this._textarea.value = data; // Load the data from the file into the textarea
+    switch (showModal(modalOptions)) {
+      case 0:
+        this.handleSave()
+        return true
+      case 1:
+        return true
+      case 2:
+        return false
+    }
   },
   // 'Save' handler
   // If fileContent.filepath is empty a new file needs to be created, use regular save otherwise
@@ -29,22 +38,30 @@ const Notepad = React.createClass({
   // Clear the textarea and redux store data afterwards
   handleCloseAndNewFile: function() {
     if ((this.props.fileContent.text) || (this.props.fileContent.filepath)) {
-      let modalOptions = {
-        type: 'question',
-        title: 'Save?',
-        message: 'Save before closing?',
-        buttons: ['Yes', 'No', 'Cancel']
-      }
-      switch (showModal(modalOptions)) {
-        case 0:
-          this.handleSave()
-        case 2:
-          return
+      if (!this.confirmSave()) {
+        return
       }
     }
     this.props.onCloseFile()
     this._textarea.value = '';
     this._textarea.focus()
+  },
+  handleOpen: function() {
+    if ((this.props.fileContent.text) || (this.props.fileContent.filepath)) {
+      if (!this.confirmSave()) {
+        return
+      }
+    }
+    openFile(this.loadCallback)
+  },
+  // Callback for opening new files, used to dispatch its data and filepath to the redux store
+  loadCallback: function(data, filepath) {
+    let newFileContent = {
+      text: data,
+      filepath: filepath
+    }
+    this.props.onLoadFile(newFileContent)
+    this._textarea.value = data; // Load the data from the file into the textarea
   },
   componentDidMount: function() {
     // Populate the textarea with data from redux store, mainly used on tab switch (component gets unmounted)
@@ -57,9 +74,7 @@ const Notepad = React.createClass({
     return (
       <div>
         <button onClick={this.handleCloseAndNewFile}>New</button>
-        <button onClick={() => {
-            openFile(this.loadCallback)
-        }}>Open</button>
+        <button onClick={this.handleOpen}>Open</button>
         <button onClick={this.handleSave}>Save</button>
         <button onClick={this.handleCloseAndNewFile}>Close</button>
       <textarea className="viewDisplay" ref={(el) => this._textarea = el} onChange={this.handleChange}></textarea>
