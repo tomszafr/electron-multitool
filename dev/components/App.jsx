@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const App = React.createClass({
   render: function() {
     return (
-      <div>
+      <div className="wrapper">
         <header>
           <h1>{this.props.title}</h1>
         </header>

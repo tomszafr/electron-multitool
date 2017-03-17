@@ -72,11 +72,14 @@ const Notepad = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <button onClick={this.handleCloseAndNewFile}>New</button>
-        <button onClick={this.handleOpen}>Open</button>
-        <button onClick={this.handleSave}>Save</button>
-        <button onClick={this.handleCloseAndNewFile}>Close</button>
+      <div className="notepadContainer">
+        <span>{this.props.fileContent.filepath}</span>
+        <div className="buttonContainer">
+          <button onClick={this.handleCloseAndNewFile}>New</button>
+          <button onClick={this.handleOpen}>Open</button>
+          <button onClick={this.handleSave}>Save</button>
+          <button onClick={this.handleCloseAndNewFile}>Close</button>
+        </div>
       <textarea className="viewDisplay" ref={(el) => this._textarea = el} onChange={this.handleChange}></textarea>
       </div>
     )
