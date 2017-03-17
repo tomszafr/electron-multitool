@@ -1,6 +1,7 @@
 const React = require('react');
 
 import { NavLink } from 'react-router-dom';
+import Player from "./Player.jsx"
 
 const App = React.createClass({
   render: function() {
@@ -17,7 +18,7 @@ const App = React.createClass({
           </ul>
         </nav>
         <section className="mainDisplay">{this.props.children}</section>
-
+        <Player></Player>
       </div> )
     }
   });
