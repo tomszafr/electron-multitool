@@ -15,7 +15,7 @@ import App from "./components/App.jsx"
 import theAppStore from "./reducers.jsx"
 
 import LoadedNotepad from './containers/LoadedNotepad.jsx'
-import SecondView from './components/views/SecondView.jsx'
+import LoadedPlayerTab from './containers/LoadedPlayerTab.jsx'
 
 let store = createStore(theAppStore)
 
@@ -25,9 +25,9 @@ require('./styles/style.scss');
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App title="The App">
+      <App title="Multitool">
         <Route exact path="/" component={LoadedNotepad} />
-        <Route path="/second" component={SecondView} />
+        <Route path="/player" component={LoadedPlayerTab} />
       </App>
     </Router>
   </Provider>,

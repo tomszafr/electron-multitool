@@ -25,6 +25,23 @@ body {
   overflow: hidden;
 }
 
+button {
+  &:hover {
+    background-color: $light-color;
+    color: $dark-color;
+    cursor: pointer;
+    border: 1px solid $dark-color;
+  }
+  font-weight: bold;
+  background-color: $dark-color;
+  color: $light-color;
+  border: 0px;
+  margin-right: 10px;
+  width: 90px;
+  height: 30px;
+  outline: none;
+}
+
 #container {
   @include position-absolute-fix()
   width: 100%;
@@ -112,22 +129,6 @@ section.mainDisplay {
         width: 100%;
         flex: none 40px;
         margin: 5px 0 10px 0;
-        button {
-          &:hover {
-            background-color: $light-color;
-            color: $dark-color;
-            cursor: pointer;
-            border: 1px solid $dark-color;
-          }
-          font-weight: bold;
-          background-color: $dark-color;
-          color: $light-color;
-          border: 0px;
-          margin-right: 10px;
-          width: 90px;
-          height: 30px;
-          outline: none;
-        }
       }
       textarea.viewDisplay {
         flex: 3 99.5%;
@@ -171,4 +172,29 @@ div.playerDock{
   height: 70px;
   padding: 7px;
   box-sizing: border-box;
+}
+tr.currentSong {
+  background-color: blue;
+  color: white;
+}
+div.spinner {
+  &.shown {
+    display: block;
+  }
+  &.hidden {
+    display: none;
+  }
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 135px;
+  margin: auto auto;
+  width: 150px;
+  height: 30px;
+  background-color: lighten(grey, 25%);
+  color: black;
+  z-index: 2;
+  text-align: center;
+  line-height: 30px;
+  transition: 0.5s;
 }

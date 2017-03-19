@@ -1,7 +1,8 @@
 const React = require('react');
 
 import { NavLink } from 'react-router-dom';
-import Player from "./Player.jsx"
+import LoadedPlayer from "./../containers/LoadedPlayer.jsx"
+import SpinnerVisibility from "./../containers/SpinnerVisibility.jsx"
 
 const App = React.createClass({
   render: function() {
@@ -14,11 +15,12 @@ const App = React.createClass({
         <nav>
           <ul className="header">
             <li><NavLink to="/">Notepad</NavLink></li>
-            <li><NavLink to="/second">Else</NavLink></li>
+            <li><NavLink to="/player">Player</NavLink></li>
           </ul>
         </nav>
+        <SpinnerVisibility></SpinnerVisibility>
         <section className="mainDisplay">{this.props.children}</section>
-        <Player></Player>
+        <LoadedPlayer ref={(player) => { this._player = player; }}> </LoadedPlayer>
       </div> )
     }
   });

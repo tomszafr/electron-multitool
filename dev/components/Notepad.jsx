@@ -1,5 +1,5 @@
 const React = require('react');
-import {showModal, openFile, readFile, saveChanges, createFile} from './../../node-methods/file-operations.jsx'
+import {showModal, openFile, readFile, saveChanges, createFile} from './../node-methods/file-operations.jsx'
 
 const Notepad = React.createClass({
   // Calls the dispatch method with the current state of the textarea
@@ -47,12 +47,17 @@ const Notepad = React.createClass({
     this._textarea.focus()
   },
   handleOpen: function() {
+    let openOptions = {
+      filters: [
+        {name: 'Text Files', extensions: ['txt']}
+      ]
+    }
     if ((this.props.fileContent.text) || (this.props.fileContent.filepath)) {
       if (!this.confirmSave()) {
         return
       }
     }
-    openFile(this.loadCallback)
+    openFile('txt', openOptions, this.loadCallback)
   },
   // Callback for opening new files, used to dispatch its data and filepath to the redux store
   loadCallback: function(data, filepath) {

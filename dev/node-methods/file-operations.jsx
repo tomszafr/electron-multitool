@@ -1,4 +1,4 @@
-const {dialog} = electronRequire('electron').remote;
+const { dialog } = electronRequire('electron').remote;
 const fs = require('fs');
 
 // https://github.com/electron/electron/blob/master/docs/api/dialog.md#dialogshowmessageboxbrowserwindow-options-callback for available options
@@ -16,24 +16,26 @@ function createFile(content, callback) {
   });
 }
 
-function openFile(cb) {
-  dialog.showOpenDialog(function (fileNames) {
-      // fileNames is an array that contains all the selected
-     if(fileNames === undefined){
-     } else {
-          readFile(fileNames[0], cb)
-     }
+function openFile(type, options, callback) {
+  dialog.showOpenDialog(options, function (fileNames) {
+    if(fileNames !== undefined){
+      if (type === 'txt') {
+        readFile(fileNames, callback)
+      } else {
+        callback(fileNames)
+      }
+    }
   })
  }
 
  function readFile(filepath, callback){
-     fs.readFile(filepath, 'utf-8', function (err, data) {
+     fs.readFile(filepath[0], 'utf-8', function (err, data) {
            if(err){
                showModal({type: 'error', message: 'An error ocurred reading the file :' + err.message})
                console.log(err);
                return false;
            }
-           callback(data, filepath);
+           callback(data, filepath[0]);
      });
  }
 

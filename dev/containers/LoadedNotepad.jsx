@@ -1,4 +1,4 @@
-import Notepad from './../components/views/Notepad.jsx'
+import Notepad from './../components/Notepad.jsx'
 import { connect } from 'react-redux'
 import { loadFile, changeText, closeFile } from './../actions.jsx'
 
