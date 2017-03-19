@@ -1,6 +1,15 @@
 var React = require('react');
 
 var Player = React.createClass({
+  getInitialState: function() {
+    return {
+      currentSongCache: {
+        path: '',
+        index: null,
+        tags: {}
+      }
+    }
+  },
   playerToggle: function() {
     if (this.props.musicPlayer.shown) {
       this.props.onHidePlayer()
@@ -8,18 +17,26 @@ var Player = React.createClass({
       this.props.onShowPlayer()
     }
   },
+  updateCache: function(nextSong) {
+    this.setState({
+      currentSongCache: nextSong
+    })
+  },
   loadNextSong: function() {
     let nextSongIndex = parseInt(this.props.currentSongIndex) + 1
     if (!this.props.musicPlayer.playlist[nextSongIndex]) {
       return
     }
-    this.props.onUpdateCurrentSong(nextSongIndex)
+    setTimeout(() => {
+      this.props.onUpdateCurrentSong(nextSongIndex);
+    }, 150)
   },
   playFile: function(fileID) {
+    console.log(fileID);
     this._player.pause()
     this._player.src = this.props.musicPlayer.playlist[fileID].path
     this._player.load()
-    this._player.play()
+    this._player.play();
     this._player.addEventListener('ended', () => {
       this.loadNextSong()
     })
@@ -27,6 +44,7 @@ var Player = React.createClass({
   componentWillReceiveProps: function(nextProps) {
     if (this.props.currentSongIndex !== nextProps.currentSongIndex) {
       this.playFile(nextProps.currentSongIndex)
+      this.updateCache(nextProps.currentSongData)
     }
   },
   componentDidMount() {
@@ -36,17 +54,13 @@ var Player = React.createClass({
     let audioStyle = {
       width: '100%'
     }
-    let currentSongData = this.props.currentSongData
-    let songFormat
-    if (currentSongData) {
-      if (currentSongData.tags) {
-        songFormat = currentSongData.tags.artist + ' - ' + currentSongData.tags.title
-      } else {
-        let stringSplit = currentSongData.path.split('\\')
-        songFormat = stringSplit[stringSplit.length-1]
-      }
+    let currentSongData = this.state.currentSongCache
+    let songFormat = ''
+    if (currentSongData.tags.artist && currentSongData.tags.title) {
+      songFormat = currentSongData.tags.artist + ' - ' + currentSongData.tags.title
     } else {
-      songFormat = ''
+      let stringSplit = currentSongData.path.split('\\')
+      songFormat = stringSplit[stringSplit.length-1]
     }
     return (
       <div className={"playerDock " + (this.props.musicPlayer.shown ? 'shown' : 'hidden')}>

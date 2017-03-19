@@ -10,10 +10,12 @@ const FileList = React.createClass({
       width: '100%',
       left: '0',
       right: '0',
+      maxHeight: '300px',
       fontFamily: 'Arial',
       fontSize: '15px',
       color: 'black',
-      padding: '10px'
+      padding: '10px',
+      overflow: 'auto'
     }
     let trStyle = {
       cursor: 'pointer',

@@ -177,24 +177,3 @@ tr.currentSong {
   background-color: blue;
   color: white;
 }
-div.spinner {
-  &.shown {
-    display: block;
-  }
-  &.hidden {
-    display: none;
-  }
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 135px;
-  margin: auto auto;
-  width: 150px;
-  height: 30px;
-  background-color: lighten(grey, 25%);
-  color: black;
-  z-index: 2;
-  text-align: center;
-  line-height: 30px;
-  transition: 0.5s;
-}

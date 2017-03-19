@@ -20,21 +20,25 @@ const PlayerTab = React.createClass({
     }
 
     let newSongs = elements.map((element, index) => {
-      return { path: element, index: index+lastSong }
+      return { path: element, index: index+lastSong, tags: {} }
     })
     this.props.onAddSongs(newSongs)
   },
   loadCallback: function(elements) {
     let playlist = elements.map((element, index) => {
-      return { path: element, index: index }
+      return { path: element, index: index, tags: {} }
     })
     this.props.onLoadPlaylist(playlist)
   },
   loadTags: async function() {
     let elements = this.props.musicPlayer.playlist
     function addTags(element, index) {
-      let tags = nodeID3.read(element.path)
-      return Object.assign(element, { tags: tags })
+      if (Object.keys(element.tags).length === 0) {
+        let tags = nodeID3.read(element.path)
+        return Object.assign(element, { tags: tags })
+      } else {
+        return element
+      }
     }
     let playlist = await elements.map(addTags)
     this.props.onLoadPlaylist(playlist)

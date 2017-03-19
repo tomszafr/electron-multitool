@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE, UPDATE_CURRENT_SONG, LOAD_PLAYLIST, SHOW_PLAYER, HIDE_PLAYER, ADD_SONGS, SHOW_SPINNER, HIDE_SPINNER } from './actions.jsx'
+import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE, UPDATE_CURRENT_SONG, LOAD_PLAYLIST, SHOW_PLAYER, HIDE_PLAYER, ADD_SONGS } from './actions.jsx'
 
 function musicPlayer (state = { shown: false, playlist: [] }, action) {
   switch (action.type) {
@@ -26,19 +26,6 @@ function musicPlayer (state = { shown: false, playlist: [] }, action) {
       return state
   }
 }
-function spinner (state = false, action) {
-  switch (action.type) {
-    case SHOW_SPINNER:
-      console.log('show_spinner');
-      return true
-    case HIDE_SPINNER:
-      console.log('hide_spinner');
-      return false
-    default:
-      return state
-
-  }
-}
 
 function fileContent (state = {}, action) {
   switch (action.type) {
@@ -58,7 +45,6 @@ function fileContent (state = {}, action) {
   }
 }
 const theAppStore = combineReducers({
-  spinner,
   fileContent,
   musicPlayer
 })
