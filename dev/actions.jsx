@@ -6,6 +6,21 @@ export const ADD_SONGS = 'ADD_SONGS'
 export const SHOW_PLAYER = 'SHOW_PLAYER'
 export const HIDE_PLAYER = 'HIDE_PLAYER'
 export const UPDATE_CURRENT_SONG = 'UPDATE_CURRENT_SONG'
+export const ADD_LOCATION = 'ADD_LOCATION'
+export const LOAD_DISTANCES = 'LOAD_DISTANCES'
+export const SAVE_ORIGIN = 'SAVE_ORIGIN'
+
+export function saveOrigin(location) {
+  return {type: SAVE_ORIGIN, location}
+}
+
+export function addLocation(location) {
+  return {type: ADD_LOCATION, location}
+}
+
+export function loadDistances(distances) {
+  return {type: LOAD_DISTANCES, distances}
+}
 
 export function closeFile() {
   return {type: CLOSE_FILE}

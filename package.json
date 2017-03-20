@@ -42,6 +42,7 @@
     "body-parser": "^1.17.1",
     "electron": "^1.6.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "google-map-react": "^0.23.0",
     "history": "^4.6.1",
     "id3-parser": "^1.2.0",
     "node-id3": "0.0.9",

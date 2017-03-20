@@ -15,6 +15,7 @@ const App = React.createClass({
           <ul className="header">
             <li><NavLink to="/">Notepad</NavLink></li>
             <li><NavLink to="/player">Player</NavLink></li>
+            <li><NavLink to="/distances">Distances</NavLink></li>
           </ul>
         </nav>
         <section className="mainDisplay">{this.props.children}</section>

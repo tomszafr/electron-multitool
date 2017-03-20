@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE, UPDATE_CURRENT_SONG, LOAD_PLAYLIST, SHOW_PLAYER, HIDE_PLAYER, ADD_SONGS } from './actions.jsx'
+import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE, UPDATE_CURRENT_SONG, LOAD_PLAYLIST, SHOW_PLAYER, HIDE_PLAYER, ADD_SONGS, ADD_LOCATION, LOAD_DISTANCES, SAVE_ORIGIN } from './actions.jsx'
 
 function musicPlayer (state = { shown: false, playlist: [] }, action) {
   switch (action.type) {
@@ -27,6 +27,33 @@ function musicPlayer (state = { shown: false, playlist: [] }, action) {
   }
 }
 
+function distCalculator(state = {
+  origin: { name: '', location: {} },
+  locations: [],
+  distances: [],
+  calcOptions: {}
+}, action) {
+  switch (action.type) {
+    case ADD_LOCATION:
+      return Object.assign({}, state, {
+        locations: [
+          ...state.locations,
+          action.location
+        ]
+      })
+    case LOAD_DISTANCES:
+      return Object.assign({}, state, {
+        distances: action.distances
+      })
+    case SAVE_ORIGIN:
+      return Object.assign({}, state, {
+        origin: action.location
+      })
+    default:
+     return state
+  }
+}
+
 function fileContent (state = {}, action) {
   switch (action.type) {
     case LOAD_FILE:
@@ -46,7 +73,8 @@ function fileContent (state = {}, action) {
 }
 const theAppStore = combineReducers({
   fileContent,
-  musicPlayer
+  musicPlayer,
+  distCalculator
 })
 
 export default theAppStore
