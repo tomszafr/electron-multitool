@@ -8,6 +8,12 @@
   bottom: 0;
 }
 
+@mixin playlistTable-rows($first, $second, $third, $fourth) {
+  background: -moz-linear-gradient(top, $first 0%, $second 50%, $third 51%, $fourth 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $first 0%, $second 50%, $third 51%, $fourth 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $first 0%, $second 50%, $third 51%, $fourth 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
 @keyframes playerSlide {
     from {bottom: -63px;}
     to {bottom: 0;}
@@ -105,6 +111,12 @@ section.mainDisplay {
     display: flex;
     flex: 3 100%;
     position: relative;
+    div.sectionContainer {
+      padding: 0.5%;
+      margin: 5px;
+      width: 100%;
+      height: 100%;
+    }
     div.notepadContainer {
       @include position-absolute-fix()
       display: flex;
@@ -173,7 +185,36 @@ div.playerDock{
   padding: 7px;
   box-sizing: border-box;
 }
-tr.currentSong {
-  background-color: blue;
-  color: white;
+table.playlistTable {
+  background-color: white;
+  width: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  font-family: Arial;
+  font-size: 15px;
+  color: black;
+  padding: 10px;
+  overflow: auto;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  thead {
+    tr {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e3e3e3+0,d6d6d6+50,c8c8c8+51,dbdbdb+100 */
+      @include playlistTable-rows(#e3e3e3, #d6d6d6, #c8c8c8, #dbdbdb);
+    }
+  }
+  tr {
+    border-bottom: 1px solid black;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+    @include playlistTable-rows(#ffffff, #f1f1f1, #e1e1e1, #f6f6f6);
+    &.currentSong {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#86a8fe+0,7098fe+50,5987fd+51,789efe+100 */
+      @include playlistTable-rows(#86a8fe, #7098fe, #5987fd, #789efe);
+      color: white;
+    }
+    td {
+      padding: 4px;
+    }
+  }
 }

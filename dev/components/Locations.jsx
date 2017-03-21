@@ -7,12 +7,16 @@ const Locations = React.createClass({
     }
   },
   calculateDistances: function() {
+    let options = this.props.distanceOptions
     let destinations = this.props.locations.map((el) => { return new google.maps.LatLng(el.location.lat, el.location.lng) })
     this.distMatrix.getDistanceMatrix({
       origins: [this.props.origin.name],
       destinations: destinations,
-      travelMode: 'DRIVING'
+      travelMode: options.travelMode,
+      avoidHighways: options.avoidHighways,
+      avoidTolls: options.avoidTolls
     }, (response, status) => {
+      console.log(response);
       let distances = response.rows[0].elements
       this.props.onCalculateDistances(distances)
     });
@@ -57,10 +61,10 @@ const Locations = React.createClass({
       return ((el.name !== '') ? ( <li key={'mapLocations'+index}>{index}: {el.name}</li> ) : ( <li key={'mapLocations'+index}>{index}: {el.location.lat} - {el.location.lng}</li> ))
     })
     const distanceSpans = this.props.distances.map((el, index) => {
-     return ( <li key={'distanceResult' + index}>Do {((this.props.locations[index].name !== '') ? this.props.locations[index].name : index) + ': '} {el.distance.text}</li> )
+     return ( <li key={'distanceResult' + index}>Do {((this.props.locations[index].name !== '') ? this.props.locations[index].name : index) + ': '} {el.distance.text} ({el.duration.text})</li> )
     })
     return (
-      <div style={{width: '50%', height: '50%'}}>
+      <div style={{width: '50%', height: '100%'}}>
         <h2>Lokacje</h2>
         Origin: <input ref={(el) => this._originInput = el} type="text"></input><button onClick={this.handleSaveOrigin}>Save</button><br />
         { this.props.origin.name } <br />

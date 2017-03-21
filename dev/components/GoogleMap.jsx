@@ -28,7 +28,7 @@ const GoogleMap = React.createClass({
       >
         {markers}
         {
-          (this.props.origin.name !== '') ? (<Marker key={'originMarker'} lat={this.props.origin.location.lat} lng={this.props.origin.location.lng} text={'S'} origin={true} />) : null
+          (this.props.origin.name !== '') ? (<Marker key={'originMarker'} lat={this.props.origin.location.lat} lng={this.props.origin.location.lng} text={'O'} origin={true} />) : null
         }
       </GoogleMapReact>
     )

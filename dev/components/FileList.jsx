@@ -5,24 +5,12 @@ const FileList = React.createClass({
     this.props.handleClick(parseInt(event.currentTarget.dataset.key))
   },
   render: function() {
-    let tableStyle = {
-      backgroundColor: 'white',
-      width: '100%',
-      left: '0',
-      right: '0',
-      maxHeight: '300px',
-      fontFamily: 'Arial',
-      fontSize: '15px',
-      color: 'black',
-      padding: '10px',
-      overflow: 'auto'
-    }
     let trStyle = {
       cursor: 'pointer',
       padding: '6px'
     }
     return (
-      <table style={tableStyle}>
+      <table className="playlistTable">
         <thead>
           <tr>
             <td>Filepath</td><td>Title</td><td>Artist</td><td>Album</td>

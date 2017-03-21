@@ -55,7 +55,7 @@ const PlayerTab = React.createClass({
   },
   render: function() {
     return (
-      <div style={{width: '100%'}}>
+      <div className="sectionContainer">
         <FileList currentSong={this.props.musicPlayer.currentSongIndex} handleClick={this.playFile}>{this.props.musicPlayer.playlist}</FileList>
         <button onClick={this.handleOpen}>Load</button>
         <button onClick={this.handleOpen}>Add more</button>
