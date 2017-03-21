@@ -1,4 +1,5 @@
 const React = require('react');
+import styles from './Locations.scss'
 
 const Locations = React.createClass({
   getDefaultProps: function() {
@@ -16,7 +17,6 @@ const Locations = React.createClass({
       avoidHighways: options.avoidHighways,
       avoidTolls: options.avoidTolls
     }, (response, status) => {
-      console.log(response);
       let distances = response.rows[0].elements
       this.props.onCalculateDistances(distances)
     });
@@ -57,18 +57,19 @@ const Locations = React.createClass({
     this.distMatrix = new google.maps.DistanceMatrixService();
   },
   render: function() {
-    const locationSpans = this.props.locations.map((el, index) => {
+    const {locations, clickedLocation, origin, distances} = this.props
+    const locationSpans = locations.map((el, index) => {
       return ((el.name !== '') ? ( <li key={'mapLocations'+index}>{index}: {el.name}</li> ) : ( <li key={'mapLocations'+index}>{index}: {el.location.lat} - {el.location.lng}</li> ))
     })
-    const distanceSpans = this.props.distances.map((el, index) => {
-     return ( <li key={'distanceResult' + index}>Do {((this.props.locations[index].name !== '') ? this.props.locations[index].name : index) + ': '} {el.distance.text} ({el.duration.text})</li> )
+    const distanceSpans = distances.map((el, index) => {
+     return ( <li key={'distanceResult' + index}>Do {((locations[index].name !== '') ? locations[index].name : index) + ': '} {el.distance.text} ({el.duration.text})</li> )
     })
     return (
-      <div style={{width: '50%', height: '100%'}}>
+      <div className={styles.locationsColumn}>
         <h2>Lokacje</h2>
         Origin: <input ref={(el) => this._originInput = el} type="text"></input><button onClick={this.handleSaveOrigin}>Save</button><br />
-        { this.props.origin.name } <br />
-        Clicked: {this.props.clickedLocation.lat} , {this.props.clickedLocation.lng} <br/>
+        { origin.name } <br />
+        Clicked: {clickedLocation.lat} , {clickedLocation.lng} <br/>
         <button onClick={this.handleAdd}>Add Click</button>
         <ul>
           { locationSpans }

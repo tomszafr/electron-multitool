@@ -1,0 +1,33 @@
+@import 'variables';
+
+body {
+  font-family: Impact;
+  background-color: $light-color;
+  color: $dark-color;
+  overflow: hidden;
+}
+
+button {
+  &:hover {
+    background-color: $light-color;
+    color: $dark-color;
+    cursor: pointer;
+    border: 1px solid $dark-color;
+  }
+  font-weight: bold;
+  background-color: $dark-color;
+  color: $light-color;
+  border: 0px;
+  margin-right: 10px;
+  width: 90px;
+  height: 30px;
+  outline: none;
+}
+
+#container {
+  @include position-absolute-fix()
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  z-index: 999;
+}

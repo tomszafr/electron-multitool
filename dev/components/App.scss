@@ -1,0 +1,58 @@
+@import 'reset';
+@import 'variables';
+
+.appWrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 98vh;
+  header {
+    width: 100%;
+    padding: 10px 20px;
+    flex: 0 0 46px;
+    h1 {
+      font-size: 44px;
+    }
+  }
+  nav {
+    width: 100%;
+    background-color: $third-color;
+    padding: 10px 20px;
+    flex: 0 0 30px;
+    ul > li {
+      display: inline-block;
+      box-sizing: border-box;
+      a {
+        &:hover {
+          background-color: $light-color;
+          color: $dark-color;
+          outline: none;
+          box-sizing: border-box;
+        }
+      cursor: pointer;
+      color: $light-color;
+      text-decoration: none;
+      text-align: center;
+      line-height: 30px;
+      font-weight: lighter;
+      background-color: $dark-color;
+      border: 1px solid $dark-color;
+      margin: 0 10px;
+      width: 100px;
+      height: 30px;
+      outline: none;
+      display: inline-block;
+      box-sizing: border-box;
+      }
+    }
+  }
+}
+
+.mainDisplay {
+    background-color: #f5e7e7;
+    border: 1px solid $dark-color;
+    margin: 0.5% 1%;
+    display: flex;
+    flex: 3 100%;
+    position: relative;
+}

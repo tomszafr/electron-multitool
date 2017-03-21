@@ -1,0 +1,22 @@
+$dark-color: #593E27;
+$light-color: #F0DBD8;
+$third-color: #A3B0BD;
+
+@mixin position-absolute-fix() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin playlistTable-rows($first, $second, $third, $fourth) {
+  background: -moz-linear-gradient(top, $first 0%, $second 50%, $third 51%, $fourth 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $first 0%, $second 50%, $third 51%, $fourth 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $first 0%, $second 50%, $third 51%, $fourth 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+@keyframes playerSlide {
+    from {bottom: -63px;}
+    to {bottom: 0;}
+}

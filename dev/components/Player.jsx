@@ -1,4 +1,5 @@
-var React = require('react');
+import React from 'react'
+import styles from './Player.scss'
 
 var Player = React.createClass({
   getInitialState: function() {
@@ -51,9 +52,6 @@ var Player = React.createClass({
     this._player.volume = 0.3
   },
   render: function() {
-    let audioStyle = {
-      width: '100%'
-    }
     let currentSongData = this.state.currentSongCache
     let songFormat = ''
     if (currentSongData.tags.artist && currentSongData.tags.title) {
@@ -63,18 +61,18 @@ var Player = React.createClass({
       songFormat = stringSplit[stringSplit.length-1]
     }
     return (
-      <div className={"playerDock " + (this.props.musicPlayer.shown ? 'shown' : 'hidden')}>
-        <div className="playerToggle" onClick={this.playerToggle}>
+      <div className={styles.playerDock + ' ' + (this.props.musicPlayer.shown ? styles.shown : styles.hidden)}>
+        <div className={styles.playerToggle} onClick={this.playerToggle}>
           <i className={'fa fa-angle-' + (this.props.musicPlayer.shown ? 'down' : 'up')} aria-hidden="true"></i>
         </div>
         <span>
           {'Currently playing: ' + songFormat}
         </span>
-        <audio style={audioStyle} controls ref={(el) => { this._player = el }} />
+        <audio style={{width: '100%'}} controls ref={(el) => { this._player = el }} />
       </div>
     );
   }
 
 });
 
-module.exports = Player;
+export default Player

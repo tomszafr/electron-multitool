@@ -16,7 +16,7 @@ const DistanceOptions = React.createClass({
   },
   render: function() {
     return (
-      <div style={{width: '50%', height: '50%'}}>
+      <div style={{width: '50%', height: '100%'}}>
         <h2>Search Options:</h2>
         <form>
           <select ref={(el) => this._travelMode = el} onChange={this.handleChange} name="travelMode">

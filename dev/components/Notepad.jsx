@@ -1,5 +1,6 @@
-const React = require('react');
+import React from 'react'
 import {showModal, openFile, readFile, saveChanges, createFile} from './../node-methods/file-operations.jsx'
+import styles from './Notepad.scss'
 
 const Notepad = React.createClass({
   // Calls the dispatch method with the current state of the textarea
@@ -77,18 +78,18 @@ const Notepad = React.createClass({
   },
   render: function() {
     return (
-      <div className="notepadContainer">
+      <div className={styles.sectionContainer}>
         <span>{this.props.fileContent.filepath}</span>
-        <div className="buttonContainer">
+        <div className={styles.buttonContainer}>
           <button onClick={this.handleCloseAndNewFile}>New</button>
           <button onClick={this.handleOpen}>Open</button>
           <button onClick={this.handleSave}>Save</button>
           <button onClick={this.handleCloseAndNewFile}>Close</button>
         </div>
-      <textarea className="viewDisplay" ref={(el) => this._textarea = el} onChange={this.handleChange}></textarea>
+      <textarea className={styles.notepadDisplay} ref={(el) => this._textarea = el} onChange={this.handleChange}></textarea>
       </div>
     )
   }
 });
 
-module.exports = Notepad;
+export default Notepad

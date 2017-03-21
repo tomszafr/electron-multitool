@@ -20,8 +20,8 @@ import LocationDistances from './containers/LocationDistances.jsx'
 
 let store = createStore(theAppStore)
 
-// Stylesheets
-require('./styles/style.scss');
+// 'Global' styles'
+require('./components/_style.scss');
 
 ReactDOM.render(
   <Provider store={store}>

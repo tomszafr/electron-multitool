@@ -1,8 +1,8 @@
-const React = require('react');
-const nodeID3 = require('node-id3');
-const async = require('async');
+import React from 'react'
+import nodeID3 from 'node-id3'
+import styles from './PlayerTab.scss'
 
-import FileList from "./FileList.jsx"
+import Playlist from "./Playlist.jsx"
 import {showModal, openFile, readFile, saveChanges, createFile} from './../node-methods/file-operations.jsx'
 
 const openOptions = {
@@ -55,14 +55,16 @@ const PlayerTab = React.createClass({
   },
   render: function() {
     return (
-      <div className="sectionContainer">
-        <FileList currentSong={this.props.musicPlayer.currentSongIndex} handleClick={this.playFile}>{this.props.musicPlayer.playlist}</FileList>
+      <div className={styles.sectionContainer}>
         <button onClick={this.handleOpen}>Load</button>
         <button onClick={this.handleOpen}>Add more</button>
         <button onClick={this.loadTags}>Load Tags</button>
+        <div className={styles.playlistTableWrap}>
+          <Playlist currentSong={this.props.musicPlayer.currentSongIndex} handleClick={this.playFile}>{this.props.musicPlayer.playlist}</Playlist>
+        </div>
       </div>
     )
   }
 });
 
-module.exports = PlayerTab;
+export default PlayerTab;

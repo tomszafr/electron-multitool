@@ -1,0 +1,39 @@
+@import 'variables';
+
+.playlistTable {
+  background-color: white;
+  width: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  font-family: Arial;
+  font-size: 15px;
+  color: black;
+  padding: 10px;
+  overflow: auto;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  thead {
+    tr {
+      cursor: default;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e3e3e3+0,d6d6d6+50,c8c8c8+51,dbdbdb+100 */
+      @include playlistTable-rows(#e3e3e3, #d6d6d6, #c8c8c8, #dbdbdb);
+    }
+  }
+  tr {
+    cursor: pointer;
+    padding: 6px;
+    border-bottom: 1px solid black;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+    @include playlistTable-rows(#ffffff, #f1f1f1, #e1e1e1, #f6f6f6);
+    td {
+      padding: 4px;
+    }
+  }
+}
+
+tr.currentSong {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#86a8fe+0,7098fe+50,5987fd+51,789efe+100 */
+  @include playlistTable-rows(#86a8fe, #7098fe, #5987fd, #789efe);
+  color: white;
+}

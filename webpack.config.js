@@ -1,6 +1,7 @@
 var webpack = require("webpack");
 var path = require("path");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var combineLoaders = require('webpack-combine-loaders')
 
 var DEV = path.resolve(__dirname, "dev");
 var OUTPUT = path.resolve(__dirname, "js");
@@ -22,11 +23,22 @@ var config = {
     {
       test: /\.jsx?$/,
       include: DEV,
-      loader: "babel-loader"
-    },
-    {
+      loader: "babel-loader",
+    }, {
       test: /\.scss?$/,
-      loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap!sass-loader?sourceMap' })
+      loader: ExtractTextPlugin.extract( {
+        fallback: 'style-loader',
+        use:
+      combineLoaders([{
+        loader: 'css-loader',
+        query: {
+          modules: true,
+          localIdentName: '[hash:base64:5]'
+        }
+        }, {
+          loader: 'sass-loader'
+        }
+      ])})
     }]
   },
   plugins: [
