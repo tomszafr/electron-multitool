@@ -33,7 +33,6 @@ var Player = React.createClass({
     }, 150)
   },
   playFile: function(fileID) {
-    console.log(fileID);
     this._player.pause()
     this._player.src = this.props.musicPlayer.playlist[fileID].path
     this._player.load()

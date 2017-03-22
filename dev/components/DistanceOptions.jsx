@@ -1,4 +1,5 @@
-const React = require('react');
+import React from 'react'
+import styles from './DistanceOptions.scss'
 
 const DistanceOptions = React.createClass({
   handleChange: function() {
@@ -16,19 +17,28 @@ const DistanceOptions = React.createClass({
   },
   render: function() {
     return (
-      <div style={{width: '50%', height: '100%'}}>
-        <h2>Search Options:</h2>
-        <form>
-          <select ref={(el) => this._travelMode = el} onChange={this.handleChange} name="travelMode">
-           <option value="DRIVING">DRIVING</option>
-           <option value="TRANSIT">TRANSIT</option>
-           <option value="WALKING">WALKING</option>
-          </select>
-          <label>Avoid highways: </label>
-          <input ref={(el) => this._avoidHighways = el} onChange={this.handleChange} type="checkbox" name="avoidHighways" />
-          <label>Avoid tolls: </label>
-          <input ref={(el) => this._avoidTolls = el} onChange={this.handleChange} type="checkbox" name="avoidTolls" />
-        </form>
+      <div className={styles.optionsWrapper}>
+        <h2>Options</h2>
+        <div className={styles.optionsBox}>
+          <div className={styles.selectBox}>
+            Travel Mode:<br />
+            <select ref={(el) => this._travelMode = el} onChange={this.handleChange} name="travelMode">
+             <option value="DRIVING">DRIVING</option>
+             <option value="TRANSIT">TRANSIT</option>
+             <option value="WALKING">WALKING</option>
+            </select>
+          </div>
+          <div className={styles.checkboxBox}>
+            <div className={styles.checkbox}>
+              <label htmlFor="avoidHighways">Avoid highways:</label>
+              <input ref={(el) => this._avoidHighways = el} onChange={this.handleChange} type="checkbox" name="avoidHighways" />
+            </div>
+            <div className={styles.checkbox}>
+              <label htmlFor="avoidTolls">Avoid tolls:</label>
+              <input ref={(el) => this._avoidTolls = el} onChange={this.handleChange} type="checkbox" name="avoidTolls" />
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

@@ -27,13 +27,14 @@
   display: flex;
   width: 100%;
   flex: 0 40px;
-  margin: 5px 0;
+  margin: 5px 0 3px 0;
 }
 
 .notepadDisplay {
   flex: 3 auto;
   position: relative;
   resize: none;
+  margin-bottom: 7px;
 
   &::-webkit-scrollbar-track
   {

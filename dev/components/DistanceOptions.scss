@@ -1,0 +1,32 @@
+@import 'variables';
+
+.optionsWrapper {
+  margin: 5px;
+  flex: 0 0 80px;
+  border: 1px solid $dark-color;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.optionsBox {
+  margin-top: 10px;
+  display: flex;
+}
+
+.selectBox {
+  select {
+    margin-top: 5px;
+  }
+}
+
+.checkboxBox {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}

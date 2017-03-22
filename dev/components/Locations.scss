@@ -1,4 +1,144 @@
+@import 'variables';
+
 .locationsColumn {
-  width: 50%;
-  height: 100%;
+  height: 99.5%;
+  flex: 0 0 49.2%;
+  box-sizing: border-box;
+  h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 5px 0;
+  }
+}
+
+.originBox {
+  width: 98%;
+  border: 1px solid $dark-color;
+  text-align: center;
+  padding-top: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  h3 {
+    font-size: 1.2em;
+  }
+  span {
+    margin-top: 5px;
+    display: block;
+    height: 1.35em;
+    line-height: 1.35em;
+    font-size: 1.35em;
+    color: blue;
+  }
+}
+
+.originInput {
+  display: flex;
+  width: 100%;
+  line-height: 30px;
+  margin-top: 7px;
+  input {
+    height: 30px;
+    font-size: 18px;
+    padding: 2px;
+    box-sizing: border-box;
+    flex: 3 auto;
+    margin: 0 3px;
+  }
+  button {
+    flex: 0 70px;
+    box-sizing: border-box;
+    margin-right: 3px;
+  }
+}
+
+.locationsBox {
+  width: 98%;
+  border: 1px solid $dark-color;
+  border-top: none;
+  text-align: center;
+  padding-top: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  h3 {
+    font-size: 1.2em;
+    margin-bottom: 7px;
+  }
+  textarea {
+    width: 98%;
+    box-sizing: border-box;
+    resize: none;
+    margin: 5px 0;
+  }
+  button {
+    width: 125px;
+    padding: 0;
+    height: 25px;
+    float: left;
+    margin-left: 5px;
+  }
+}
+
+.locationsTable {
+  width: 100%;
+  color: white;
+  font-family: Arial;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  thead {
+    tr{
+      td:last-child {
+        text-align: center;
+      }
+    }
+  }
+  tr {
+    td {
+      padding: 4px;
+      border-right: 1px solid black;
+      &:first-child {
+        width: 30px;
+      }
+      &:last-child {
+        text-align: left;
+        padding-left: 10px;
+      }
+    }
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b64336+0,872b2b+100 */
+    background: #b64336; /* Old browsers */
+    background: -moz-linear-gradient(top, #b64336 0%, #872b2b 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #b64336 0%,#872b2b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #b64336 0%,#872b2b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b64336', endColorstr='#872b2b',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+.massAdd {
+  transition: 0.5s;
+}
+.shown {
+  height: 150px;
+}
+
+.hidden {
+  height: 0px;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.outputBox {
+  width: 98%;
+  border: 1px solid $dark-color;
+  border-top: none;
+  text-align: center;
+  padding-top: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  h3 {
+    font-size: 1.2em;
+    margin-bottom: 7px;
+  }
 }

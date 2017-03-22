@@ -56,9 +56,11 @@ const PlayerTab = React.createClass({
   render: function() {
     return (
       <div className={styles.sectionContainer}>
-        <button onClick={this.handleOpen}>Load</button>
-        <button onClick={this.handleOpen}>Add more</button>
-        <button onClick={this.loadTags}>Load Tags</button>
+        <div className={styles.buttonContainer}>
+          <button onClick={this.handleOpen}>Load</button>
+          <button onClick={this.handleOpen}>Add more</button>
+          <button onClick={this.loadTags}>Load Tags</button>
+        </div>
         <div className={styles.playlistTableWrap}>
           <Playlist currentSong={this.props.musicPlayer.currentSongIndex} handleClick={this.playFile}>{this.props.musicPlayer.playlist}</Playlist>
         </div>
