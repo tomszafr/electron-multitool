@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE, UPDATE_CURRENT_SONG, LOAD_PLAYLIST, SHOW_PLAYER, HIDE_PLAYER, ADD_SONGS, ADD_LOCATION, LOAD_DISTANCES, SAVE_ORIGIN, UPDATE_DISTANCE_OPTIONS } from './actions.jsx'
+import { LOAD_FILE, CHANGE_TEXT, CLOSE_FILE, UPDATE_CURRENT_SONG, LOAD_PLAYLIST, SHOW_PLAYER, HIDE_PLAYER, ADD_SONGS, ADD_LOCATION, REMOVE_LOCATION, LOAD_DISTANCES, SAVE_ORIGIN, UPDATE_DISTANCE_OPTIONS, CLEAR_LOCATIONS } from './actions.jsx'
 
 function musicPlayer (state = { shown: false, playlist: [] }, action) {
   switch (action.type) {
@@ -40,6 +40,16 @@ function distCalculator(state = {
           ...state.locations,
           action.location
         ]
+      })
+    case REMOVE_LOCATION:
+      let locations = [...state.locations]
+      locations.splice(action.index, 1)
+    return Object.assign({}, state, {
+      locations: locations
+    })
+    case CLEAR_LOCATIONS:
+      return Object.assign({}, state, {
+        locations: []
       })
     case LOAD_DISTANCES:
       return Object.assign({}, state, {

@@ -1,4 +1,4 @@
-@import 'variables';
+@import '../variables';
 
 .sectionContainer {
   padding: 0.5%;
@@ -8,42 +8,33 @@
   display: flex;
   flex-flow: column;
   box-sizing: border-box;
-  span {
-    display: block;
-    flex: 0 15px;
-    width: 99.5%;
-    background-color: white;
-    border: 1px solid $dark-color;
-    padding: 2px;
-    min-height: 15px;
-    margin: 3px 0;
-    color: black;
-    font-weight: 100;
-    font-family: arial;
-  }
 }
 
 .buttonContainer {
   display: flex;
   width: 100%;
   flex: 0 40px;
+  min-height: 40px;
   margin: 5px 0 3px 0;
 }
 
-.notepadDisplay {
+.playlistTableWrap {
+  overflow-y: auto;
+  overflow-x: none;
   flex: 3 auto;
   position: relative;
   resize: none;
-  margin-bottom: 7px;
+  margin-bottom: 40px;
+  min-height: 100px;
 
   &::-webkit-scrollbar-track
   {
-    background-color: #F5F5F5;
+  	background-color: #F5F5F5;
   }
   &::-webkit-scrollbar
   {
-    width: 10px;
-    background-color: #F5F5F5;
+  	width: 10px;
+  	background-color: #F5F5F5;
   }
   &::-webkit-scrollbar-thumb
   {

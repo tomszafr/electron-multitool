@@ -1,6 +1,6 @@
-import Distances from './../components/Distances.jsx'
+import Distances from './../components/Distances/Distances.jsx'
 import { connect } from 'react-redux'
-import { addLocation, loadDistances, saveOrigin, updateDistanceOptions } from './../actions.jsx'
+import { addLocation, loadDistances, saveOrigin, updateDistanceOptions, removeLocation, clearLocations } from './../actions.jsx'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,6 +15,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddLocation: (location) => {
       dispatch(addLocation(location))
+    },
+    onRemoveLocation: (index) => {
+      dispatch(removeLocation(index))
+    },
+    onClearLocations: () => {
+      dispatch(clearLocations())
     },
     onCalculateDistances: (distances) => {
       dispatch(loadDistances(distances))

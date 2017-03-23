@@ -1,5 +1,5 @@
 import React from 'react'
-import {showModal, openFile, readFile, saveChanges, createFile} from './../node-methods/file-operations.jsx'
+import {showModal, openFile, readFile, saveChanges, createFile} from './../../node-methods/file-operations.jsx'
 import styles from './Notepad.scss'
 
 const Notepad = React.createClass({

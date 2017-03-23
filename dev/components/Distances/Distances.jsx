@@ -31,7 +31,7 @@ const Distances = React.createClass({
     }
     this.geocoder.geocode({ 'address': `${clickedLocation.lat},${clickedLocation.lng}`}, (results, status) => {
       this.props.onSaveOrigin({ name: results[0].formatted_address,
-        location:  { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() }
+        location:  { lat: clickedLocation.lat, lng: clickedLocation.lng }
       })
     })
   },
@@ -56,7 +56,7 @@ const Distances = React.createClass({
           </div>
           <DistanceOptions distanceOptions={this.props.distanceOptions} onUpdateDistanceOptions={this.props.onUpdateDistanceOptions}/>
         </div>
-        <Locations distanceOptions={this.props.distanceOptions} origin={this.props.origin} onSaveOrigin={this.props.onSaveOrigin} locations={this.props.locations} onAddLocation={this.props.onAddLocation} clickedLocation={this.state.clickedLocation} onCalculateDistances={this.props.onCalculateDistances} distances={this.props.distances}/>
+        <Locations geocoder={this.geocoder} clickedLocation={this.state.clickedLocation} {...this.props}/>
       </div>
     )
   }

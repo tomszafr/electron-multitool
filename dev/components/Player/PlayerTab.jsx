@@ -3,7 +3,7 @@ import nodeID3 from 'node-id3'
 import styles from './PlayerTab.scss'
 
 import Playlist from "./Playlist.jsx"
-import {showModal, openFile, readFile, saveChanges, createFile} from './../node-methods/file-operations.jsx'
+import {showModal, openFile, readFile, saveChanges, createFile} from './../../node-methods/file-operations.jsx'
 
 const openOptions = {
   properties: ['multiSelections'],

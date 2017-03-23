@@ -25,6 +25,7 @@ const GoogleMap = React.createClass({
           key: 'AIzaSyBGDE1Ry5H9_3uBKCMlUod5za3E01R6QJ0'
         }}
         onClick={this.props.handleClick}
+        resetBoundsOnResize={true}
       >
         {markers}
         {

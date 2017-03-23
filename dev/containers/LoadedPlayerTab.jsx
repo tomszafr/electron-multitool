@@ -1,4 +1,4 @@
-import PlayerTab from './../components/PlayerTab.jsx'
+import PlayerTab from './../components/Player/PlayerTab.jsx'
 import { connect } from 'react-redux'
 import { updateCurrentSong, loadPlaylist, showPlayer, addSongs } from './../actions.jsx'
 

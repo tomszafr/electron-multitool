@@ -1,4 +1,4 @@
-import Player from './../components/Player.jsx'
+import Player from './../components/Player/Player.jsx'
 import { connect } from 'react-redux'
 import { updateCurrentSong, hidePlayer, showPlayer } from './../actions.jsx'
 
