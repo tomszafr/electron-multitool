@@ -44,7 +44,7 @@ const Distances = React.createClass({
       <div className={styles.sectionContainer}>
         <div className={styles.mapColumn}>
           <div className={styles.clickedBox}>
-            Click location: <br />
+            <h3>Click location:</h3>
             {(this.state.clickedLocation.lat !== '' || this.state.clickedLocation.lng !== '') ?
               (<div className={styles.coordinates}><span style={{color: 'green'}}>{this.state.clickedLocation.lat}</span> , <span style={{color: 'purple'}}>{this.state.clickedLocation.lng}</span></div>)
             : <div className={styles.coordinates}>Click somewhere!</div>}

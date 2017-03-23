@@ -29,12 +29,13 @@
 .originBox {
   width: 98%;
   border: 1px solid $dark-color;
+  border-radius: 5px;
   text-align: center;
   padding-top: 10px;
   left: 0;
   right: 0;
   margin: auto;
-  margin-bottom: 3px;
+  margin-bottom: 0.6rem;
   h3 {
     font-size: 1.2rem;
     margin-bottom: 7px;
@@ -42,7 +43,7 @@
   span {
     margin: 5px 0;
     display: block;
-    height: 1.35rem;
+    height: auto;
     line-height: 1.35rem;
     font-size: 1.35rem;
     color: blue;
@@ -54,7 +55,7 @@
   text-align: center;
   left: 0;
   right: 0;
-  margin: 0.5% auto;
+  margin: 0.6rem auto;
   button {
     width: 45%;
     font-size: 1.3rem;
@@ -65,6 +66,7 @@
 .outputBox {
   width: 98%;
   border: 1px solid $dark-color;
+  border-radius: 5px;
   text-align: center;
   padding-top: 10px;
   left: 0;
@@ -79,7 +81,7 @@
 
 .resultsTable {
   width: 99%;
-  font-family: Arial;
+  font-family: 'Roboto';
   font-size: 0.95rem;
   box-sizing: border-box;
   position: relative;
@@ -102,6 +104,7 @@
       padding: 3px;
       &:first-child {
         width: 30px;
+        text-align: center;
       }
     }
   }

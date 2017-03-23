@@ -12,7 +12,10 @@
     flex: 0 0 42px;
     line-height: 42px;
     h1 {
-      font-size: 42px;
+      font-family: 'Airstream';
+      font-size: 48px;
+      padding-top: 3px;
+      margin-left: 5%;
     }
   }
   nav {
@@ -35,7 +38,7 @@
       text-decoration: none;
       text-align: center;
       line-height: 30px;
-      font-weight: lighter;
+      font-weight: bold;
       background-color: $dark-color;
       border: 1px solid $dark-color;
       margin: 0 10px;

@@ -21,6 +21,10 @@ var config = {
   module: {
     loaders: [
     {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loader: 'file-loader?name=../css/fonts/[name].[ext]'
+    },
+    {
       test: /\.jsx?$/,
       include: DEV,
       loader: "babel-loader",

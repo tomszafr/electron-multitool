@@ -21,6 +21,8 @@ import LocationDistances from './containers/LocationDistances.jsx'
 let store = createStore(theAppStore)
 
 // 'Global' styles'
+require('./fonts/Airstream/Airstream.scss')
+require('./fonts/RobotoCond/RobotoCondensed.scss')
 require('./components/_style.scss');
 
 ReactDOM.render(

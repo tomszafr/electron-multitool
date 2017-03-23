@@ -4,8 +4,12 @@
   margin: 5px;
   flex: 0 0 80px;
   border: 1px solid $dark-color;
+  border-radius: 5px;
   box-sizing: border-box;
   padding: 5px;
+  h2 {
+    font-weight: bold;
+  }
 }
 
 .optionsBox {

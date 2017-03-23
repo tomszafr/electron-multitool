@@ -18,7 +18,7 @@ const DistanceOptions = React.createClass({
   render: function() {
     return (
       <div className={styles.optionsWrapper}>
-        <h2>Options</h2>
+        <h3>Options</h3>
         <div className={styles.optionsBox}>
           <div className={styles.selectBox}>
             Travel Mode:<br />

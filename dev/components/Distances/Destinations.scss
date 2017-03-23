@@ -3,6 +3,7 @@
 .locationsBox {
   width: 98%;
   border: 1px solid $dark-color;
+  border-radius: 5px;
   text-align: center;
   padding-top: 10px;
   left: 0;
@@ -31,7 +32,7 @@
 .locationsTable {
   width: 99%;
   color: white;
-  font-family: Arial;
+  font-family: 'Roboto';
   font-size: 0.95rem;
   box-sizing: border-box;
   margin-bottom: 0.5%;

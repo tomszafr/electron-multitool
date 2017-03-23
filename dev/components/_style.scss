@@ -1,7 +1,9 @@
 @import 'variables';
-
+html {
+  font-size: 16px;
+}
 body {
-  font-family: Impact;
+  font-family: 'Roboto';
   background-color: $light-color;
   color: $dark-color;
   overflow: hidden;
@@ -14,7 +16,9 @@ button {
     cursor: pointer;
     border: 1px solid $dark-color;
   }
+  font-family: 'Roboto';
   font-weight: bold;
+  font-size: 0.9rem;
   background-color: $dark-color;
   color: $light-color;
   border: 0px;

@@ -33,7 +33,7 @@ const Destinations = React.createClass({
     this.props.onAddLocation(location)
   },
   handleTextSubmit: function () {
-    this.props.handleMassAdd(this._textarea.value)
+    this.handleMassAdd(this._textarea.value)
   },
   loadLocations: function() {
     let openOptions = {
@@ -68,7 +68,7 @@ const Destinations = React.createClass({
     let locationRows = locations.map((el, index) => {
       return (
         <tr key={`locationsRow${index}`}>
-          <td>{index}</td><td>{(el.name !== '') ? el.name : `${el.location.lat} , ${el.location.lng}`}</td><td><i data-locationid={index} onClick={this.handleRemove} className="fa fa-times" aria-hidden="true"></i></td>
+          <td>{index}</td><td>{(el.name !== '') ? el.name : `${el.location.lat}, ${el.location.lng}`}</td><td><i data-locationid={index} onClick={this.handleRemove} className="fa fa-times" aria-hidden="true"></i></td>
         </tr>
       )
     })

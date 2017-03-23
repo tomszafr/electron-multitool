@@ -1,6 +1,6 @@
 node_modules
 test.txt
-npm-debug.log.*
+npm-debug.*
 proba.txt
 js/react.js
 js/react.js.map
