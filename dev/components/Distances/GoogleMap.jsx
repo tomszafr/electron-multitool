@@ -6,8 +6,8 @@ import Marker from "./Marker.jsx"
 const GoogleMap = React.createClass({
   getDefaultProps: function () {
     return {
-      center: {lat: 50.296, lng: 18.93},
-      zoom: 15,
+      center: {lat: 52.26638550818717, lng: 19.39461492776877},
+      zoom: 6,
       size: { width: 300, height: 300 },
     }
   },
