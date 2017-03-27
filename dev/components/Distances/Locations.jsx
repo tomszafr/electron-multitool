@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './Locations.scss'
 import Destinations from './Destinations.jsx'
 import SearchBox from './SearchBox.jsx'
-import {showModal} from './../../node-methods/file-operations.jsx'
+import Results from './Results.jsx'
+import {showModal, createFile} from './../../node-methods/file-operations.jsx'
 
 const Locations = React.createClass({
   getDefaultProps: function() {
@@ -11,20 +12,16 @@ const Locations = React.createClass({
     }
   },
   calculateDistances: function() {
+    let modalOptions = {
+      type: 'info',
+      title: 'Incomplete data',
+    }
     if (this.props.origin.name === '') {
-      let modalOptions = {
-        type: 'info',
-        title: 'Incomplete data',
-        message: 'You must specify the origin location',
-      }
+      modalOptions['message'] = 'You must specify the origin location'
       showModal(modalOptions)
       return
     } else if (this.props.locations.length <= 0) {
-      let modalOptions = {
-        type: 'info',
-        title: 'Incomplete data',
-        message: 'You must add some destinations',
-      }
+      modalOptions['message'] = 'You must add some destinations'
       showModal(modalOptions)
       return
     }
@@ -51,22 +48,6 @@ const Locations = React.createClass({
   },
   render: function() {
     const {locations, clickedLocation, origin, distances} = this.props
-    let distanceRows
-    if (distances[0] && distances[0].status === 'ZERO_RESULTS') {
-      distanceRows = [(
-        <tr key={'distanceNoResults'}>
-          <td colSpan="4">No routes found.</td>
-        </tr>
-      )]
-    } else {
-      distanceRows = distances.map((el, index) => {
-       return (
-         <tr key={'distanceResult' + index}>
-           <td>{index}</td><td>{(el.name !== '') ? el.name : `${el.location.lat}, ${el.location.lng}` }</td><td>{el.distance.text}</td><td>{el.duration.text}</td>
-         </tr>
-       )
-      })
-    }
     return (
       <div className={styles.locationsColumn}>
         <h2>Distance matrix</h2>
@@ -80,21 +61,7 @@ const Locations = React.createClass({
           <button onClick={this.calculateDistances}>Calculate!</button>
         </div>
         {
-          (distanceRows.length > 0) ? (
-            <div className={styles.outputBox}>
-              <h3>Results:</h3>
-              <table className={styles.resultsTable}>
-                <thead>
-                  <tr>
-                    <td>No.</td><td>Location</td><td>Distance</td><td>Duration</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  { distanceRows }
-                </tbody>
-              </table>
-            </div>
-          ) : null
+          (distances.length > 0) ? ( <Results distances={distances} />) : null
         }
       </div> )
     }

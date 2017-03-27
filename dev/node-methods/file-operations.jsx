@@ -12,7 +12,9 @@ function createFile(content, callback) {
               return;
          }
          saveChanges(fileName, content)
-         callback(fileName)
+         if (callback) {
+           callback(fileName)
+         }
   });
 }
 

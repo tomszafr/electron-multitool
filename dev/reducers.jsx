@@ -28,7 +28,7 @@ function musicPlayer (state = { shown: false, playlist: [] }, action) {
 }
 
 function distCalculator(state = {
-  origin: { name: '', location: {} },
+  origin: { set: false, name: '', location: {} },
   locations: [],
   distances: [],
   distanceOptions: { travelMode: 'DRIVING', avoidHighways: false, avoidTolls: false }

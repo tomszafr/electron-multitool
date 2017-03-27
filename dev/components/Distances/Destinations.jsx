@@ -3,6 +3,12 @@ import styles from './Destinations.scss'
 import {showModal, openFile} from './../../node-methods/file-operations.jsx'
 
 const Destinations = React.createClass({
+  propTypes: {
+    onClearLocations: React.PropTypes.func.isRequired,
+    onRemoveLocation: React.PropTypes.func.isRequired,
+    onAddLocation: React.PropTypes.func.isRequired,
+    locations: React.PropTypes.array
+  },
   getInitialState: function() {
     return {
       massAddVisibility: false
@@ -57,6 +63,9 @@ const Destinations = React.createClass({
         })
       })
       this._textarea.value = ''
+      this.setState({
+        massAddVisibility: false
+      })
     }
   },
   componentDidMount: function() {

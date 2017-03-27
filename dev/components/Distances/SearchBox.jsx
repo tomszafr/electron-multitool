@@ -7,7 +7,7 @@ const SearchBox = React.createClass({
     event.preventDefault()
     const address = this._input.value
     this.geocoder.geocode({ 'address': address }, (results, status) => {
-      this.props.onSaveOrigin({ name: results[0].formatted_address,
+      this.props.onSaveOrigin({ set: true, name: results[0].formatted_address,
         location:  { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() }
       })
     })
